@@ -265,7 +265,7 @@ section {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 30px;
     margin-top: 35px;
 }
@@ -685,74 +685,76 @@ section {
 .footer-contact p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
+    margin-bottom: 8px;
+}
 
-        .footer-contact a {
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 600;
-            text-decoration: none;
-        }
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    text-decoration: none;
+}
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-        }
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-title { font-size: 3.5rem; }
-            .about-container { grid-template-columns: 1fr; }
-            .destinations-grid { grid-template-columns: repeat(2, 1fr); }
-            .activities-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-            .gallery-item.large { grid-row: span 1; }
-            .testimonial-card,
-            .testimonial-card:nth-child(4),
-            .testimonial-card:nth-child(5) {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .hero-title { font-size: 3.5rem; }
+    .about-container { grid-template-columns: 1fr; }
+    .destinations-grid { grid-template-columns: repeat(2, 1fr); }
+    .activities-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item.large { grid-row: span 1; }
+    .testimonial-card,
+    .testimonial-card:nth-child(4),
+    .testimonial-card:nth-child(5) {
+        flex: 0 0 calc(50% - 10px);
+    }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
 
-        @media (max-width: 768px) {
-            .navbar { padding: 15px 25px; }
-            .navbar.scrolled { padding: 10px 25px; }
-            .nav-links { display: none; }
-            .nav-buttons { gap: 8px; }
-            .nav-btn { padding: 8px 18px; font-size: 0.8rem; }
-            .hero-title { font-size: 2.5rem; }
-            .hero { min-height: 600px; }
-            .about, .destinations, .activities, .gallery, .testimonials, .cta, .footer { padding: 60px 25px; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-            .destinations-grid { grid-template-columns: 1fr; }
-            .activities-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .testimonial-card,
-            .testimonial-card:nth-child(4),
-            .testimonial-card:nth-child(5) {
-                flex: 0 0 100%;
-            }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-            .cta h2 { font-size: 2rem; }
-        }
+@media (max-width: 768px) {
+    .navbar { padding: 15px 25px; }
+    .navbar.scrolled { padding: 10px 25px; }
+    .nav-links { display: none; }
+    .nav-buttons { gap: 8px; }
+    .nav-btn { padding: 8px 18px; font-size: 0.8rem; }
+    .hero-title { font-size: 2.5rem; }
+    .hero { min-height: 600px; }
+    .about, .destinations, .activities, .gallery, .testimonials, .cta, .footer { padding: 60px 25px; }
+    .stats-grid { gap: 20px; }
+    .destinations-grid { grid-template-columns: 1fr; }
+    .activities-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: clamp(220px, 30vw, 280px); }
+    .gallery-item.large,
+    .gallery-item.wide { grid-column: span 1; grid-row: span 1; }
+    .testimonial-card,
+    .testimonial-card:nth-child(4),
+    .testimonial-card:nth-child(5) {
+        flex: 0 0 100%;
+    }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .cta h2 { font-size: 2rem; }
+}
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
