@@ -168,7 +168,7 @@ h1, h2, h3, h4 {
 /* ===== HERO SECTION ===== */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, rgba(11, 60, 74, 0.7), rgba(26, 107, 122, 0.5)), url('./assets/images/photo/piaynemo-3.png') center/cover;
+    background: linear-gradient(135deg, rgba(11, 60, 74, 0.7), rgba(26, 107, 122, 0.5)), url('../images/photo/piaynemo-3.png') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
