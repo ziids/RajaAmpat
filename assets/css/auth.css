@@ -1,0 +1,279 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Pake font yang sama sama index.html */
+}
+
+/* Mengatur body agar gambar background full screen */
+body.auth-page {
+    /* GANTI INI DENGAN PATH GAMBAR RAJA AMPAT LO */
+    background-image: url('../images/photo/piaynemo-3.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Overlay biar background agak gelap/terang dan form makin kelihatan */
+.auth-overlay {
+    background-color: rgba(255, 255, 255, 0.4); /* Putih transparan, sesuaikan selera */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Biar navbar di atas, form di tengah */
+}
+
+/* Styling Container Utama Form (Biar Center) */
+.auth-main {
+    flex: 1; /* Ambil sisa space vertikal */
+    display: flex;
+    justify-content: center; /* Center Horizontal */
+    align-items: center;     /* Center Vertikal */
+    padding: 20px;
+}
+
+/* Styling Box Putih Form */
+.auth-card {
+    background-color: rgba(255, 255, 255, 0.95); /* Putih solid tapi agak transparan dikit */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 480px; /* Lebar maksimal form */
+    text-align: center;
+}
+
+/* Styling Judul (Login/Register) */
+.auth-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Styling Group Input */
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #008080; /* Warna teal/hijau air */
+}
+
+/* Styling 'Hide' Password */
+.hide-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Styling Link 'Forget password' */
+.forget-password {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #008080;
+    text-decoration: none;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+/* Styling Divider 'OR' */
+.or-divider {
+    display: flex;
+    align-items: center;
+    color: #888;
+    font-size: 14px;
+    margin: 25px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.or-divider span {
+    padding: 0 15px;
+}
+
+/* Styling Tombol Sosial (Google/Apple) */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.social-btn:hover {
+    background-color: #f9f9f9;
+}
+
+.social-btn img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Styling Tombol Utama (Login/Register) */
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4f6f6f; /* Teal gelap sesuai desain */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #3f5959;
+}
+
+/* Styling Teks Bawah Form */
+.auth-footer {
+    font-size: 14px;
+    color: #666;
+    margin-top: 25px;
+}
+
+.auth-footer a {
+    color: #008080;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Styling Tambahan Khusus Register (Checkbox & List) */
+.password-requirements {
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Kolom */
+    gap: 5px;
+}
+
+.password-requirements li::before {
+    content: "• ";
+    color: #ddd;
+}
+
+.terms-group {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.terms-group input {
+    margin-top: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.terms-group label {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.terms-group a {
+    color: #008080;
+    text-decoration: none;
+}
+
+/* Styling Navbar Buttons (Sesuai Halaman Utama) */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Tombol Outline (Tidak Aktif) */
+.nav-btn-outline {
+    background-color: transparent;
+    color: white; /* Asumsi background navbar gelap/gambar */
+    border: 1px solid white;
+}
+.nav-btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Tombol Filled (Aktif) - Warna Ijo/Teal gelap sesuai tema utama */
+.nav-btn-filled {
+    background-color: #1a4d4d; /* Sesuaikan kode hex warna ijo tema lo */
+    color: white;
+    border: 1px solid #1a4d4d;
+}
+.nav-btn-filled:hover {
+    background-color: #113333;
+}
+
+/* Benerin Teks Terms & Privacy yang berantakan */
+.terms-text {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.terms-text a {
+    color: #1a4d4d;
+    text-decoration: none;
+    font-weight: 600;
+}

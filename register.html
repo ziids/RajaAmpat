@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Raja Ampat</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/auth.css">
+</head>
+<body class="auth-page">
+    <div class="auth-overlay">
+        
+        <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+        <img src="./assets/images/logo/logo.png" alt="Raja Ampat Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#tentang">Tentang</a></li>
+        <li><a href="index.html#destinasi">Destinasi</a></li>
+        <li><a href="index.html#aktivitas">Aktivitas</a></li>
+        <li><a href="index.html#galeri">Galeri</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-buttons" id="navButtonsContainer">
+        <a href="register.html" class="nav-btn nav-btn-filled">Register</a>
+        <a href="login.html" class="nav-btn nav-btn-outline">Login</a>
+    </div>
+</nav>
+
+
+        <main class="auth-main">
+            <div class="auth-card">
+                <h1 class="auth-title">Register</h1>
+                
+                <form id="registerForm">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="reg-username">Username</label>
+        <input type="text" id="reg-username" required>
+    </div>
+
+    <div class="form-group">
+        <label for="reg-password">Password</label>
+        <div class="input-wrapper">
+            <input type="password" id="reg-password" required>
+            <a href="#" class="hide-password">Hide</a>
+        </div>
+    </div>
+
+    <div class="terms-group">
+    <input type="checkbox" id="terms" name="terms" required>
+    <label for="terms">
+        I want to receive emails about the product, feature updates, events, and marketing promotions.
+    </label>
+</div>
+
+<p class="terms-text">
+    By creating an account, you agree to the <a href="#" target="_blank">Terms of use</a> and <a href="#" target="_blank">Privacy Policy</a>.
+</p><nav class="navbar" id="navbar">
+    <div class="nav-logo">
+        <img src="./assets/images/logo/logo.png" alt="Raja Ampat Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#tentang">Tentang</a></li>
+        <li><a href="index.html#destinasi">Destinasi</a></li>
+        <li><a href="index.html#aktivitas">Aktivitas</a></li>
+        <li><a href="index.html#galeri">Galeri</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-buttons" id="navButtonsContainer">
+        <a href="register.html" class="nav-btn nav-btn-filled">Register</a>
+        <a href="login.html" class="nav-btn nav-btn-outline">Login</a>
+    </div>
+</nav>
+
+    <button type="submit" class="btn-primary">Create an account</button>
+</form>
+
+                <p class="auth-footer">Already have an account? <a href="login.html">Log in</a></p>
+            </div>
+        </main>
+
+    </div>
+    <script src="./assets/js/auth.js"></script>
+</body>
+</html>
+
