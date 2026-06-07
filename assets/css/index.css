@@ -165,6 +165,8 @@ h1, h2, h3, h4 {
     transform: translateY(-2px);
 }
 
+
+
 /* ===== HERO SECTION ===== */
 .hero {
     height: 100vh;
@@ -758,3 +760,4 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+

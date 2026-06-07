@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Raja Ampat</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./assets/css/profile.css">
+</head>
+<body class="profile-page">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="./assets/images/logo/logo.png" alt="Raja Ampat Logo">
+                </a>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="profile.html" class="active"><i class="far fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Order History</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="index.html" style="margin-top: 50px; color: #d9534f;"><i class="fas fa-sign-out-alt"></i> Back to Home</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="user-dropdown">
+                    <i class="far fa-bell" style="margin-right: 15px; color: #888; font-size: 18px;"></i>
+                    <div class="user-info">
+                        <span>Welcome back,</span>
+                        <strong id="topUsername">User</strong>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=User&background=f0f4f4&color=1a4d4d" id="topAvatar" alt="Avatar">
+                    <i class="fas fa-chevron-down" style="color: #888; font-size: 12px;"></i>
+                </div>
+            </header>
+
+            <section class="profile-section">
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2>MY PROFILE</h2>
+                        <button class="btn-my-data">My Data</button>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="avatar-section">
+                            <img src="https://ui-avatars.com/api/?name=User&background=f0f4f4&color=1a4d4d" id="mainAvatar" alt="Profile Avatar">
+                            <button class="btn-upload">Upload Photo</button>
+                        </div>
+
+                        <div class="data-list">
+                            <div class="data-item">
+                                <div>
+                                    <div class="data-label">Your Name</div>
+                                    <div class="data-value" id="profileName">-</div>
+                                </div>
+                                <button class="btn-edit">Edit</button>
+                            </div>
+                            
+                            <div class="data-item">
+                                <div>
+                                    <div class="data-label">Email</div>
+                                    <div class="data-value" id="profileEmail">-</div>
+                                </div>
+                                <button class="btn-edit">Edit</button>
+                            </div>
+
+                            <div class="data-item">
+                                <div>
+                                    <div class="data-label">Phone Number</div>
+                                    <div class="data-value" id="profilePhone">Belum diatur</div>
+                                </div>
+                                <button class="btn-edit">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ambil data user yang lagi login dari Local Storage
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (currentUser) {
+                // Tembak datanya ke HTML
+                document.getElementById("topUsername").textContent = currentUser.username;
+                document.getElementById("profileName").textContent = currentUser.username;
+                document.getElementById("profileEmail").textContent = currentUser.email || "Email tidak tersedia";
+                
+                // Opsional: Bikin avatar otomatis berdasarkan inisial nama
+                const avatarUrl = `https://ui-avatars.com/api/?name=${currentUser.username}&background=f0f4f4&color=1a4d4d`;
+                document.getElementById("topAvatar").src = avatarUrl;
+                document.getElementById("mainAvatar").src = avatarUrl;
+            } else {
+                // Kalau belum login tapi maksa buka profile.html, tendang ke login
+                alert("Silakan login terlebih dahulu!");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+</body>
+</html>
