@@ -242,3 +242,93 @@ body.auth-page {
     text-decoration: none;
     font-weight: 600;
 }
+
+/* =========================================================
+   PERBAIKAN FORM PEMESANAN (pesan.html)
+   ========================================================= */
+
+/* Lebarin card formnya biar lega */
+.auth-page .auth-card[style*="max-width: 600px"] {
+    width: 100%;
+    max-width: 700px !important;
+    padding: 40px 50px;
+}
+
+/* Benerin layout Label dan Input biar presisi */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+/* Paksa checkbox berbentuk kotak (bukan radio button bulat) */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8fafd;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #444;
+}
+
+.checkbox-item input[type="checkbox"] {
+    appearance: auto !important; /* Kembalikan sifat asli browser */
+    -webkit-appearance: checkbox !important;
+    width: 18px !important;
+    height: 18px !important;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Style tombol Batal dan Simpan biar sejajar */
+.btn-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-cancel, .btn-primary {
+    flex: 1; /* Bagi rata lebarnya */
+    padding: 14px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-cancel {
+    background-color: #d9534f;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-cancel:hover { background-color: #c9302c; }

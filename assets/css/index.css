@@ -582,6 +582,148 @@ section {
     color: var(--text-light);
 }
 
+/* =========================================================
+   PAKET WISATA SECTION
+   ========================================================= */
+.package-section {
+    padding: 80px 60px;
+    background-color: #f8fafd;
+}
+
+.package-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.package-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.package-header p {
+    color: #666;
+}
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.package-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+}
+
+.package-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.package-content {
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.package-title {
+    font-size: 20px;
+    color: #1a4d4d; /* Warna utama lo */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.package-features {
+    list-style: none;
+    margin-bottom: 25px;
+    flex: 1; /* Biar tombolnya rata bawah semua */
+}
+
+.package-features li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.package-features li i {
+    color: #28a745; /* Warna centang ijo */
+    margin-top: 3px;
+}
+
+/* Tombol YouTube Wajib Dosen */
+.btn-youtube {
+    display: block;
+    text-align: center;
+    background-color: #ffeaea;
+    color: #d9534f;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.btn-youtube:hover {
+    background-color: #d9534f;
+    color: white;
+}
+
+.package-price {
+    background-color: #f0f7f7;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.package-price span {
+    font-size: 12px;
+    color: #666;
+}
+
+.package-price h4 {
+    font-size: 18px;
+    color: #1a4d4d;
+    margin-top: 5px;
+}
+
+.btn-buy {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #1a4d4d;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #113333;
+}
+
 /* ===== CTA SECTION ===== */
 .cta {
     padding: 120px 60px;
@@ -761,3 +903,51 @@ section {
     transform: translateY(0);
 }
 
+/* =========================================================
+   PERBAIKAN POSITIONING BADGE "PALING LARIS"
+   ========================================================= */
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px; /* Kasih ruang di atas biar badge gak kepotong */
+}
+
+.package-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden; /* Biar badge pita yang keluar kotak terpotong rapi */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    
+    /* SELEKTOR UTAMA YANG WAJIB ADA: Gembok posisi elemen anak */
+    position: relative !important; 
+    border: 1px solid transparent;
+}
+
+/* Sempurnakan posisi pita diagonalnya */
+.popular-badge {
+    position: absolute !important;
+    top: 20px;
+    right: -35px;
+    background: #d9534f;
+    color: white;
+    padding: 6px 40px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    letter-spacing: 0.5px;
+}
+
+/* Supaya card tengah tidak terlalu jomplang tapi tetep stand out */
+.popular-card {
+    border: 2px solid #1a4d4d !important;
+}
