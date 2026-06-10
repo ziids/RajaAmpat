@@ -2,23 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
     const navButtons = document.getElementById("navButtonsContainer");
+    const navMobileButtons = document.getElementById("navMobileButtonsContainer");
 
     // 1. Cek Status Login buat ubah Navbar
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     
     if (currentUser) {
         // Kalau udah login, ganti tombol Register/Login jadi Profile & Logout
-        if (navButtons) {
+        if (navButtons && navMobileButtons) {
             navButtons.innerHTML = `
-    <a href="profile.html" class="nav-btn nav-btn-register">Halo, ${currentUser.username}</a>
-    <a href="#" id="btnLogout" class="nav-btn nav-btn-login">Logout</a>
-`;
-            
-            document.getElementById("btnLogout").addEventListener("click", (e) => {
-                e.preventDefault();
-                localStorage.removeItem("currentUser");
-                window.location.href = "index.html"; // Balik ke beranda
-            });
+                <a href="profile.html" class="user-greeting">Halo, <b>${currentUser.username}</b>!</a>
+                <a href="#" id="btnLogout" class="nav-btn nav-btn-desktop" onclick="logout()">Logout</a>
+            `;
+
+            navMobileButtons.innerHTML = `
+                <a href="profile.html" class="user-greeting">Halo, <b>${currentUser.username}</b>!</a>
+                <a href="#" id="btnLogout" class="nav-btn nav-btn-mobile" onclick="logout()">Logout</a>
+            `;
         }
     }
 
@@ -65,3 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "index.html";
+}

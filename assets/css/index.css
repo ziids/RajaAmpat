@@ -129,43 +129,194 @@ h1, h2, h3, h4 {
     cursor: pointer;
 }
 
-.nav-btn-register {
+.nav-btn-desktop {
     background: transparent;
     color: var(--white);
     border: 1.5px solid var(--white);
 }
 
-.navbar.scrolled .nav-btn-register {
+.navbar.scrolled .nav-btn-desktop {
     color: var(--primary-dark);
     border-color: var(--primary-dark);
 }
 
-.nav-btn-register:hover {
+.nav-btn-desktop:hover {
     background: var(--white);
     color: var(--primary-dark);
 }
 
-.navbar.scrolled .nav-btn-register:hover {
+.navbar.scrolled .nav-btn-desktop:hover {
     background: var(--primary-dark);
     color: var(--white);
 }
 
-.nav-btn-login {
-    background: var(--primary-dark);
+.user-greeting {
+    padding: 10px 28px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
     color: var(--white);
 }
 
-.navbar.scrolled .nav-btn-login {
-    background: var(--primary-dark);
-    color: var(--white);
+.navbar.scrolled .user-greeting {
+    color: var(--primary-dark);
 }
 
-.nav-btn-login:hover {
-    background: var(--primary);
-    transform: translateY(-2px);
+/* ===== HAMBURGER ===== */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
 }
 
+.nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.35s ease;
+    transform-origin: center;
+}
 
+.navbar.scrolled .nav-hamburger span {
+    background: var(--text-dark);
+}
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== OVERLAY ===== */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ===== MOBILE BUTTONS (hanya tampil di drawer) ===== */
+.nav-mobile-buttons {
+    display: none;
+    width: 100%;
+}
+
+/* ===== RESPONSIVE TABLET ===== */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .nav-links { gap: 20px; }
+    .about-container { grid-template-columns: 1fr; }
+    .destinations-grid { grid-template-columns: repeat(2, 1fr); }
+    .activities-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item.large { grid-row: span 1; }
+    .testimonial-card { flex: 0 0 calc(50% - 10px); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 25px; }
+    .navbar.scrolled { padding: 10px 25px; }
+    .nav-buttons { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(280px, 80vw);
+        height: 100vh;
+        background: var(--primary-dark);
+        flex-direction: column;
+        padding: 80px 30px 40px;
+        gap: 0;
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        overflow-y: auto;
+        display: flex !important;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+        color: var(--white) !important;
+        padding-left: 8px;
+        font-weight: 600;
+    }
+
+    .nav-mobile-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    .nav-mobile-buttons .nav-btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 10px 28px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+
+    .nav-mobile-buttons .nav-btn-mobile {
+        background: transparent;
+        color: var(--white);
+        border: 1.5px solid var(--white);
+    }
+
+    .hero { min-height: 100svh; }
+    .about, .destinations, .gallery,
+    .testimonials, .cta, .activities { padding: 60px 25px; }
+    .footer { padding: 60px 25px 30px; }
+    .destinations-grid { grid-template-columns: 1fr; }
+    .activities-grid { grid-template-columns: 1fr; }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 260px;
+    }
+    .gallery-item.large,
+    .gallery-item.wide { grid-column: span 1; grid-row: span 1; }
+    .testimonial-card { flex: 0 0 100%; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .cta h2 { font-size: 2rem; }
+}
 
 /* ===== HERO SECTION ===== */
 .hero {
@@ -586,51 +737,58 @@ section {
    PAKET WISATA SECTION
    ========================================================= */
 .package-section {
-    padding: 80px 60px;
-    background-color: #f8fafd;
+    padding: 100px 60px;
+    position: relative;
+    background-color: var(--white);
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
 .package-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .package-header h2 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .package-header p {
-    color: #666;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .package-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1100px;
     margin: 0 auto;
-}
-
-.package-card {
-    background: #ffffff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    padding-top: 30px;
 }
 
 .package-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
 .package-img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.package-card:hover .package-img {
+    transform: scale(1.05);
 }
 
 .package-content {
@@ -641,34 +799,37 @@ section {
 }
 
 .package-title {
-    font-size: 20px;
-    color: #1a4d4d; /* Warna utama lo */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--primary-dark);
     text-align: center;
     margin-bottom: 20px;
     font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .package-features {
     list-style: none;
     margin-bottom: 25px;
-    flex: 1; /* Biar tombolnya rata bawah semua */
+    flex: 1;
 }
 
 .package-features li {
-    font-size: 14px;
-    color: #555;
+    font-size: 0.9rem;
+    color: var(--text-gray);
     margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    line-height: 1.5;
 }
 
 .package-features li i {
-    color: #28a745; /* Warna centang ijo */
-    margin-top: 3px;
+    color: var(--primary);
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
-/* Tombol YouTube Wajib Dosen */
 .btn-youtube {
     display: block;
     text-align: center;
@@ -677,51 +838,101 @@ section {
     padding: 10px;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 20px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn-youtube:hover {
     background-color: #d9534f;
-    color: white;
+    color: var(--white);
 }
 
 .package-price {
-    background-color: #f0f7f7;
+    background: linear-gradient(135deg, rgba(11, 60, 74, 0.06), rgba(26, 107, 122, 0.06));
     padding: 15px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    border: 1px solid rgba(26, 107, 122, 0.12);
 }
 
 .package-price span {
-    font-size: 12px;
-    color: #666;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .package-price h4 {
-    font-size: 18px;
-    color: #1a4d4d;
-    margin-top: 5px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin: 4px 0 2px;
+    font-weight: 700;
+}
+
+.package-price .price-suffix {
+    font-size: 0.75rem;
+    color: var(--text-light);
 }
 
 .btn-buy {
     display: block;
     width: 100%;
     text-align: center;
-    background-color: #1a4d4d;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    padding: 14px;
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.3s;
+    font-size: 0.9rem;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 0.3px;
 }
 
 .btn-buy:hover {
-    background-color: #113333;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(26, 74, 74, 0.3);
+}
+
+/* Badge Paling Laris */
+.package-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden; /* Biar badge pita yang keluar kotak terpotong rapi */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    
+    /* SELEKTOR UTAMA YANG WAJIB ADA: Gembok posisi elemen anak */
+    position: relative !important; 
+    border: 1px solid transparent;
+}
+
+/* Sempurnakan posisi pita diagonalnya */
+.popular-badge {
+    position: absolute !important;
+    top: 20px;
+    right: -35px;
+    background: #d9534f;
+    color: white;
+    padding: 6px 40px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    letter-spacing: 0.5px;
+}
+
+/* Supaya card tengah tidak terlalu jomplang tapi tetep stand out */
+.popular-card {
+    border: 2px solid #1a4d4d !important;
 }
 
 /* ===== CTA SECTION ===== */
@@ -901,53 +1112,4 @@ section {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* =========================================================
-   PERBAIKAN POSITIONING BADGE "PALING LARIS"
-   ========================================================= */
-
-.package-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 30px; /* Kasih ruang di atas biar badge gak kepotong */
-}
-
-.package-card {
-    background: #ffffff;
-    border-radius: 15px;
-    overflow: hidden; /* Biar badge pita yang keluar kotak terpotong rapi */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    
-    /* SELEKTOR UTAMA YANG WAJIB ADA: Gembok posisi elemen anak */
-    position: relative !important; 
-    border: 1px solid transparent;
-}
-
-/* Sempurnakan posisi pita diagonalnya */
-.popular-badge {
-    position: absolute !important;
-    top: 20px;
-    right: -35px;
-    background: #d9534f;
-    color: white;
-    padding: 6px 40px;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    transform: rotate(45deg);
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    letter-spacing: 0.5px;
-}
-
-/* Supaya card tengah tidak terlalu jomplang tapi tetep stand out */
-.popular-card {
-    border: 2px solid #1a4d4d !important;
 }
