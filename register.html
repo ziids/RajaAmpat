@@ -15,60 +15,74 @@
 <body class="auth-page">
     <div class="auth-overlay">
         
-        <nav class="navbar" id="navbar">
-    <div class="nav-logo">
-        <img src="./assets/images/logo/logo.png" alt="Raja Ampat Logo">
-    </div>
-    <ul class="nav-links">
-    <li><a href="index.html">Beranda</a></li>
-    <li><a href="index.html#tentang">Tentang</a></li>
-    <li><a href="index.html#destinasi">Destinasi</a></li>
-    <li><a href="index.html#aktivitas">Aktivitas</a></li>
-    <li><a href="index.html#galeri">Galeri</a></li>
-    <li><a href="index.html#kontak">Kontak</a></li>
-</ul>
-    <div class="nav-buttons" id="navButtonsContainer">
-    <a href="register.html" class="nav-btn nav-btn-login">Register</a>
-    <a href="login.html" class="nav-btn nav-btn-register">Login</a>
-</div>
-</nav>
+        <!-- NAVBAR -->
+        <nav class="navbar scrolled" id="navbar">
+            <div class="nav-logo">
+                <img src="./assets/images/logo/logo.png" alt="Raja Ampat Logo">
+            </div>
 
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#beranda">Beranda</a></li>
+                <li><a href="index.html#tentang">Tentang</a></li>
+                <li><a href="index.html#destinasi">Destinasi</a></li>
+                <li><a href="index.html#aktivitas">Aktivitas</a></li>
+                <li><a href="index.html#galeri">Galeri</a></li>
+                <li><a href="index.html#testimoni">Testimoni</a></li>
+                <li><a href="index.html#paket">Paket Wisata</a></li>
+                <li class="nav-mobile-buttons" id="navMobileButtonsContainer">
+                    <a href="./register.html" class="nav-btn nav-btn-mobile">Register</a>
+                    <a href="./login.html" class="nav-btn nav-btn-mobile">Login</a>
+                </li>
+            </ul>
+
+            <div class="nav-buttons" id="navButtonsContainer">
+                <a href="./register.html" class="nav-btn nav-btn-desktop">Register</a>
+                <a href="./login.html" class="nav-btn nav-btn-desktop">Login</a>
+            </div>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+        <div class="nav-overlay" id="navOverlay"></div>
 
         <main class="auth-main">
             <div class="auth-card">
                 <h1 class="auth-title">Register</h1>
                 
                 <form id="registerForm">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
-    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="user@gmail.com" required>
+                    </div>
 
-    <div class="form-group">
-        <label for="reg-username">Username</label>
-        <input type="text" id="reg-username" required>
-    </div>
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" placeholder="Username" required>
+                    </div>
 
-    <div class="form-group">
-        <label for="reg-password">Password</label>
-        <div class="input-wrapper">
-            <input type="password" id="reg-password" required>
-            <a href="#" class="hide-password">Hide</a>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="reg-password" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password">
+                                <i class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
 
-    <div class="terms-group">
-    <input type="checkbox" id="terms" name="terms" required>
-    <label for="terms">
-        I want to receive emails about the product, feature updates, events, and marketing promotions.
-    </label>
-</div>
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            I want to receive emails about the product, feature updates, events, and marketing promotions.
+                        </label>
+                    </div>
 
-<p class="terms-text">
-    By creating an account, you agree to the <a href="#" target="_blank">Terms of use</a> and <a href="#" target="_blank">Privacy Policy</a>.
-</p>
-    <button type="submit" class="btn-primary">Create an account</button>
-</form>
+                    <p class="terms-text">By creating an account, you agree to the <a href="#" target="_blank">Terms of use</a> and <a href="#" target="_blank">Privacy Policy</a>.</p>
+                    <button type="submit" class="btn-primary">Create an account</button>
+                </form>
 
                 <p class="auth-footer">Already have an account? <a href="login.html">Log in</a></p>
             </div>
@@ -76,6 +90,7 @@
 
     </div>
     <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/navbar.js"></script>
 </body>
 </html>
 

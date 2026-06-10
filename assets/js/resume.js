@@ -42,19 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="data-value">${data.totalTagihan}</div>
         </div>
     `;
-
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-        const isAlreadySaved = sessionStorage.getItem("orderSaved_" + data.nama);
-        if (!isAlreadySaved) {
-            let orderHistory = JSON.parse(localStorage.getItem("history_" + currentUser.username)) || [];
-
-            data.tanggalOrder = new Date().toLocaleDateString('id-ID');
-            orderHistory.push(data);
-            localStorage.setItem("history_" + currentUser.username, JSON.stringify(orderHistory));
-            sessionStorage.setItem("orderSaved_" + data.nama, "true");
-        }
-    }
 });
 
 function hapusCache() {
