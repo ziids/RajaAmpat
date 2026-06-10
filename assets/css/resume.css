@@ -1,0 +1,96 @@
+body {
+    background-color: #f0f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+.resume-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.resume-title {
+    text-align: center;
+    color: #1a4d4d;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.resume-data {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.data-row {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 12px;
+    font-size: 15px;
+}
+.data-label {
+    flex: 0 0 45%;
+    color: #666;
+    font-weight: 500;
+}
+.data-colon {
+    flex: 0 0 5%;
+    color: #333;
+    font-weight: 600;
+}
+.data-value {
+    flex: 1;
+    color: #333;
+    font-weight: 600;
+    text-align: right;
+}
+.total-row {
+    margin-top: 10px;
+    border-bottom: none;
+    padding-top: 15px;
+    border-top: 2px solid #1a4d4d;
+}
+.total-row .data-label, .total-row .data-colon, .total-row .data-value {
+    color: #d9534f;
+    font-size: 18px;
+    font-weight: 700;
+}
+    
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+.btn-action {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.btn-pesan-lagi {
+    background: #1a4d4d;
+    color: white;
+    border: 1px solid #1a4d4d;
+}
+.btn-pesan-lagi:hover {
+    background: #113333;
+}
+.btn-tidak {
+    background: white;
+    color: #666;
+    border: 1px solid #ccc;
+}
+.btn-tidak:hover {
+    background: #f9f9f9;
+    color: #333;
+}

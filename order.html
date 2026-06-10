@@ -11,75 +11,44 @@
 
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/auth.css">
-    <style>
-        /* Styling tambahan khusus form pemesanan agar rapi */
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 8px;
-        }
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            color: #555;
-            cursor: pointer;
-        }
-        .checkbox-item input {
-            width: auto !important;
-            cursor: pointer;
-        }
-        .form-group input[readonly] {
-            background-color: #f4f7f7;
-            border-color: #ddd;
-            color: #1a4d4d;
-            font-weight: 600;
-            cursor: not-allowed;
-        }
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        .btn-cancel {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background-color: #d9534f;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        .btn-cancel:hover {
-            background-color: #c9302c;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/order.css">
 </head>
 <body class="auth-page">
     <div class="auth-overlay">
         
-        <nav class="navbar" id="navbar">
+        <!-- NAVBAR -->
+        <nav class="navbar scrolled" id="navbar">
             <div class="nav-logo">
                 <img src="./assets/images/logo/logo.png" alt="Raja Ampat Logo">
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Beranda</a></li>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#beranda">Beranda</a></li>
                 <li><a href="index.html#tentang">Tentang</a></li>
                 <li><a href="index.html#destinasi">Destinasi</a></li>
                 <li><a href="index.html#aktivitas">Aktivitas</a></li>
                 <li><a href="index.html#galeri">Galeri</a></li>
-                <li><a href="index.html#kontak">Kontak</a></li>
+                <li><a href="index.html#testimoni">Testimoni</a></li>
+                <li><a href="index.html#paket">Paket Wisata</a></li>
+                <li class="nav-mobile-buttons" id="navMobileButtonsContainer">
+                    <a href="./register.html" class="nav-btn nav-btn-mobile">Register</a>
+                    <a href="./login.html" class="nav-btn nav-btn-mobile">Login</a>
+                </li>
             </ul>
+
             <div class="nav-buttons" id="navButtonsContainer">
-                <a href="register.html" class="nav-btn nav-btn-register">Register</a>
-                <a href="login.html" class="nav-btn nav-btn-register">Login</a>
+                <a href="./register.html" class="nav-btn nav-btn-desktop">Register</a>
+                <a href="./login.html" class="nav-btn nav-btn-desktop">Login</a>
             </div>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
+        <div class="nav-overlay" id="navOverlay"></div>
+        
 
         <main class="auth-main" style="padding-top: 120px; padding-bottom: 50px;">
             <div class="auth-card" style="max-width: 600px; text-align: left;">
@@ -88,7 +57,7 @@
                 <form id="orderForm">
                     <div class="form-group">
                         <label for="namaPemesan">Nama Pemesan</label>
-                        <input type="text" id="namaPemesan" required placeholder="Masukkan nama lengkap">
+                        <input type="text" id="namaPemesan" required disabled placeholder="Masukkan nama lengkap">
                     </div>
 
                     <div class="form-group">
@@ -107,35 +76,35 @@
                     </div>
 
                     <div class="form-group">
-    <label>Pilihan Paket Perjalanan</label>
-    <div class="checkbox-group">
-        
-        <label class="checkbox-item" style="align-items: flex-start;">
-            <input type="radio" name="paketWisata" class="layanan-radio" value="1000000" id="paketHemat" required style="margin-top: 5px;">
-            <div>
-                <strong style="display: block; color: #1a4d4d;">Paket Hemat (Rp 1.000.000 / hari)</strong>
-                <span style="font-size: 13px; color: #666; display: block; margin-top: 4px;">Fasilitas: Homestay, transport reguler, makan 2x sehari.</span>
-            </div>
-        </label>
+                        <label>Pilihan Paket Perjalanan</label>
+                        <div class="checkbox-group">
+                            
+                            <label class="checkbox-item" style="display: flex; align-items: center; gap: 15px;">
+                                <input type="radio" name="paketWisata" class="layanan-radio" value="1000000" id="paketHemat" required style="margin-top: 5px;">
+                                <div>
+                                    <strong style="display: block; color: #1a4d4d;">Paket Hemat (Rp 1.000.000 / hari)</strong>
+                                    <span style="font-size: 13px; color: #666; display: block; margin-top: 4px;">Fasilitas: Homestay, transport reguler, makan 2x sehari.</span>
+                                </div>
+                            </label>
 
-        <label class="checkbox-item" style="align-items: flex-start;">
-            <input type="radio" name="paketWisata" class="layanan-radio" value="1500000" id="paketSantai" style="margin-top: 5px;">
-            <div>
-                <strong style="display: block; color: #1a4d4d;">Paket Santai (Rp 1.500.000 / hari)</strong>
-                <span style="font-size: 13px; color: #666; display: block; margin-top: 4px;">Fasilitas: Hotel standar, snorkeling, makan 3x sehari.</span>
-            </div>
-        </label>
+                            <label class="checkbox-item" style="display: flex; align-items: center; gap: 15px;">
+                                <input type="radio" name="paketWisata" class="layanan-radio" value="1500000" id="paketSantai" style="margin-top: 5px;">
+                                <div>
+                                    <strong style="display: block; color: #1a4d4d;">Paket Santai (Rp 1.500.000 / hari)</strong>
+                                    <span style="font-size: 13px; color: #666; display: block; margin-top: 4px;">Fasilitas: Hotel standar, snorkeling, makan 3x sehari.</span>
+                                </div>
+                            </label>
 
-        <label class="checkbox-item" style="align-items: flex-start;">
-            <input type="radio" name="paketWisata" class="layanan-radio" value="2500000" id="paketPuas" style="margin-top: 5px;">
-            <div>
-                <strong style="display: block; color: #1a4d4d;">Paket Puas (Rp 2.500.000 / hari)</strong>
-                <span style="font-size: 13px; color: #666; display: block; margin-top: 4px;">Fasilitas: Resort premium, diving, drone, makan 3x sehari.</span>
-            </div>
-        </label>
+                            <label class="checkbox-item" style="display: flex; align-items: center; gap: 15px;">
+                                <input type="radio" name="paketWisata" class="layanan-radio" value="2500000" id="paketPuas" style="margin-top: 5px;">
+                                <div>
+                                    <strong style="display: block; color: #1a4d4d;">Paket Puas (Rp 2.500.000 / hari)</strong>
+                                    <span style="font-size: 13px; color: #666; display: block; margin-top: 4px;">Fasilitas: Resort premium, diving, drone, makan 3x sehari.</span>
+                                </div>
+                            </label>
 
-    </div>
-</div>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="hargaPaket">Harga Paket Perjalanan</label>
@@ -157,88 +126,8 @@
 
     </div>
 
-    <script>
-       document.addEventListener("DOMContentLoaded", () => {
-    // Cek status sesi login
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (!currentUser) {
-        alert("Akses ditolak! Lo harus login dulu sebelum bisa memesan paket wisata.");
-        window.location.href = "login.html";
-        return; // Hentikan eksekusi script
-    }
-    const form = document.getElementById("orderForm");
-    const waktuInput = document.getElementById("waktuPerjalanan");
-    const pesertaInput = document.getElementById("jumlahPeserta");
-    const radios = document.querySelectorAll(".layanan-radio");
-    
-    const hargaPaketField = document.getElementById("hargaPaket");
-    const jumlahTagihanField = document.getElementById("jumlahTagihan");
-
-    // Fungsi format Rupiah
-    function formatRupiah(angka) {
-        return "Rp " + angka.toLocaleString('id-ID');
-    }
-
-    // Fungsi Kalkulasi Utama
-    function hitungKalkulasi() {
-        let hargaPaketPerjalanan = 0;
-
-        // Cek radio button mana yang aktif
-        const paketTerpilih = document.querySelector('input[name="paketWisata"]:checked');
-        if (paketTerpilih) {
-            hargaPaketPerjalanan = parseInt(paketTerpilih.value);
-        }
-
-        // Ambil input waktu dan peserta (default 0 jika kosong)
-        const waktu = parseInt(waktuInput.value) || 0;
-        const peserta = parseInt(pesertaInput.value) || 0;
-
-        // Rumus Tagihan sesuai instruksi dosen
-        const jumlahTagihan = waktu * peserta * hargaPaketPerjalanan;
-
-        // Tampilkan hasil ke form
-        hargaPaketField.value = formatRupiah(hargaPaketPerjalanan);
-        jumlahTagihanField.value = formatRupiah(jumlahTagihan);
-    }
-
-    // Trigger otomatis saat user ngetik atau milih
-    waktuInput.addEventListener("input", hitungKalkulasi);
-    pesertaInput.addEventListener("input", hitungKalkulasi);
-    radios.forEach(radio => {
-        radio.addEventListener("change", hitungKalkulasi);
-    });
-
-    // Handle saat form di-submit
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const paketTerpilih = document.querySelector('input[name="paketWisata"]:checked');
-        if (!paketTerpilih) {
-            alert("Pilih paket perjalanannya dulu bro!");
-            return;
-        }
-
-        let namaPaket = "";
-        if(paketTerpilih.id === "paketHemat") namaPaket = "Paket Hemat";
-        if(paketTerpilih.id === "paketSantai") namaPaket = "Paket Santai";
-        if(paketTerpilih.id === "paketPuas") namaPaket = "Paket Puas";
-
-        const dataPesanan = {
-            nama: document.getElementById("namaPemesan").value,
-            nomorTelp: document.getElementById("nomorTelp").value,
-            waktu: waktuInput.value,
-            peserta: pesertaInput.value,
-            layanan: namaPaket,
-            hargaPaket: hargaPaketField.value,
-            totalTagihan: jumlahTagihanField.value
-        };
-
-        // Simpan ke local storage buat ditampilin di halaman resume
-        localStorage.setItem("latestReservation", JSON.stringify(dataPesanan));
-        window.location.href = "resume.html";
-    });
-});
-    </script>
+    <script src="./assets/js/order.js"></script>
     <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/navbar.js"></script>
 </body>
 </html>

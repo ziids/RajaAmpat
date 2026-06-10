@@ -1,0 +1,46 @@
+/* Styling tambahan khusus form pemesanan agar rapi */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+.checkbox-item input {
+    width: auto !important;
+    cursor: pointer;
+}
+.form-group input[readonly] {
+    background-color: #f4f7f7;
+    border-color: #ddd;
+    color: #1a4d4d;
+    font-weight: 600;
+    cursor: not-allowed;
+}
+.btn-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+.btn-cancel {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #d9534f;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.btn-cancel:hover {
+    background-color: #c9302c;
+}
