@@ -1085,6 +1085,7 @@ section {
     .stats-grid { gap: 20px; }
     .destinations-grid { grid-template-columns: 1fr; }
     .activities-grid { grid-template-columns: 1fr; }
+    .package-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: clamp(220px, 30vw, 280px); }
     .gallery-item.large,
     .gallery-item.wide { grid-column: span 1; grid-row: span 1; }
