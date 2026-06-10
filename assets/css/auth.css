@@ -1,14 +1,11 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif; /* Pake font yang sama sama index.html */
+    font-family: 'Inter', sans-serif;
 }
 
-/* Mengatur body agar gambar background full screen */
 body.auth-page {
-    /* GANTI INI DENGAN PATH GAMBAR RAJA AMPAT LO */
     background-image: url('../images/photo/piaynemo-3.png'); 
     background-size: cover;
     background-position: center;
@@ -18,35 +15,33 @@ body.auth-page {
     width: 100%;
 }
 
-/* Overlay biar background agak gelap/terang dan form makin kelihatan */
 .auth-overlay {
-    background-color: rgba(255, 255, 255, 0.4); /* Putih transparan, sesuaikan selera */
+    background-color: rgba(255, 255, 255, 0.4);
     min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Biar navbar di atas, form di tengah */
+    flex-direction: column;
 }
 
-/* Styling Container Utama Form (Biar Center) */
 .auth-main {
-    flex: 1; /* Ambil sisa space vertikal */
+    flex: 1;
     display: flex;
-    justify-content: center; /* Center Horizontal */
-    align-items: center;     /* Center Vertikal */
+    justify-content: center;
+    align-items: center;
     padding: 20px;
+    padding-top: 120px;
+    padding-bottom: 50px;
 }
 
-/* Styling Box Putih Form */
 .auth-card {
-    background-color: rgba(255, 255, 255, 0.95); /* Putih solid tapi agak transparan dikit */
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 480px; /* Lebar maksimal form */
+    max-width: 480px;
     text-align: center;
 }
 
-/* Styling Judul (Login/Register) */
 .auth-title {
     font-size: 24px;
     font-weight: 600;
@@ -54,7 +49,6 @@ body.auth-page {
     margin-bottom: 30px;
 }
 
-/* Styling Group Input */
 .form-group {
     text-align: left;
     margin-bottom: 20px;
@@ -82,22 +76,33 @@ body.auth-page {
 
 .form-group input:focus {
     outline: none;
-    border-color: #008080; /* Warna teal/hijau air */
+    border-color: #008080;
 }
 
-/* Styling 'Hide' Password */
-.hide-password {
+.toggle-password {
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 14px;
-    color: #888;
+    border: none;
+    background: transparent;
     cursor: pointer;
-    text-decoration: none;
+    color: #666;
+    font-size: 16px;
 }
 
-/* Styling Link 'Forget password' */
+.toggle-password:hover {
+    color: #1a4d4d;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    padding-right: 45px;
+}
+
 .forget-password {
     display: block;
     text-align: right;
@@ -108,7 +113,6 @@ body.auth-page {
     margin-bottom: 20px;
 }
 
-/* Styling Divider 'OR' */
 .or-divider {
     display: flex;
     align-items: center;
@@ -129,7 +133,6 @@ body.auth-page {
     padding: 0 15px;
 }
 
-/* Styling Tombol Sosial (Google/Apple) */
 .social-btn {
     display: flex;
     align-items: center;
@@ -155,13 +158,12 @@ body.auth-page {
     margin-right: 10px;
 }
 
-/* Styling Tombol Utama (Login/Register) */
 .btn-primary {
     width: 100%;
     padding: 15px;
     border: none;
     border-radius: 8px;
-    background-color: #4f6f6f; /* Teal gelap sesuai desain */
+    background-color: #4f6f6f;
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -174,7 +176,6 @@ body.auth-page {
     background-color: #3f5959;
 }
 
-/* Styling Teks Bawah Form */
 .auth-footer {
     font-size: 14px;
     color: #666;
@@ -187,7 +188,6 @@ body.auth-page {
     font-weight: 600;
 }
 
-/* Styling Tambahan Khusus Register (Checkbox & List) */
 .password-requirements {
     font-size: 12px;
     color: #888;
@@ -196,7 +196,7 @@ body.auth-page {
     margin-bottom: 20px;
     list-style-type: none;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 Kolom */
+    grid-template-columns: 1fr 1fr;
     gap: 5px;
 }
 
@@ -229,7 +229,6 @@ body.auth-page {
     text-decoration: none;
 }
 
-/* Benerin Teks Terms & Privacy yang berantakan */
 .terms-text {
     font-size: 13px;
     color: #666;
@@ -243,18 +242,13 @@ body.auth-page {
     font-weight: 600;
 }
 
-/* =========================================================
-   PERBAIKAN FORM PEMESANAN (pesan.html)
-   ========================================================= */
 
-/* Lebarin card formnya biar lega */
 .auth-page .auth-card[style*="max-width: 600px"] {
     width: 100%;
     max-width: 700px !important;
     padding: 40px 50px;
 }
 
-/* Benerin layout Label dan Input biar presisi */
 .form-group {
     margin-bottom: 20px;
 }
@@ -278,7 +272,6 @@ body.auth-page {
     transition: border-color 0.3s;
 }
 
-/* Paksa checkbox berbentuk kotak (bukan radio button bulat) */
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -299,7 +292,7 @@ body.auth-page {
 }
 
 .checkbox-item input[type="checkbox"] {
-    appearance: auto !important; /* Kembalikan sifat asli browser */
+    appearance: auto !important;
     -webkit-appearance: checkbox !important;
     width: 18px !important;
     height: 18px !important;
@@ -307,7 +300,6 @@ body.auth-page {
     margin: 0;
 }
 
-/* Style tombol Batal dan Simpan biar sejajar */
 .btn-container {
     display: flex;
     gap: 15px;
@@ -315,7 +307,7 @@ body.auth-page {
 }
 
 .btn-cancel, .btn-primary {
-    flex: 1; /* Bagi rata lebarnya */
+    flex: 1;
     padding: 14px;
     text-align: center;
     border-radius: 8px;
@@ -323,6 +315,7 @@ body.auth-page {
     font-weight: 600;
     cursor: pointer;
     border: none;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn-cancel {

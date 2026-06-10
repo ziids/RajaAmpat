@@ -4,11 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const navButtons = document.getElementById("navButtonsContainer");
     const navMobileButtons = document.getElementById("navMobileButtonsContainer");
 
-    // 1. Cek Status Login buat ubah Navbar
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     
     if (currentUser) {
-        // Kalau udah login, ganti tombol Register/Login jadi Profile & Logout
         if (navButtons && navMobileButtons) {
             navButtons.innerHTML = `
                 <a href="profile.html" class="user-greeting">Halo, <b>${currentUser.username}</b>!</a>
@@ -22,46 +20,58 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 2. Handle Register
     if (registerForm) {
         registerForm.addEventListener("submit", (e) => {
             e.preventDefault();
+
             const email = document.getElementById("email").value;
             const username = document.getElementById("reg-username").value;
             const password = document.getElementById("reg-password").value;
 
-            // Simpan data user ke Local Storage
-            const userData = { email, username, password };
-            localStorage.setItem("userDB", JSON.stringify(userData));
-            
-            alert("Registrasi berhasil! Silakan Login.");
+            const users = JSON.parse(localStorage.getItem("userDB")) || [];
+
+            const userExists = users.some( user => user.username === username || user.email === email );
+
+            if (userExists) {
+                alert("Username atau email sudah digunakan!");
+                return;
+            }
+
+            users.push({ email, username, password });
+
+            localStorage.setItem("userDB", JSON.stringify(users));
+
+            alert("Registrasi berhasil!");
             window.location.href = "login.html";
         });
     }
 
-    // 3. Handle Login
     if (loginForm) {
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
+
             const inputUser = document.getElementById("username").value;
             const inputPass = document.getElementById("password").value;
 
-            const storedUser = JSON.parse(localStorage.getItem("userDB"));
+            const users = JSON.parse(localStorage.getItem("userDB")) || [];
 
-            // Validasi Login
-            if (storedUser && (inputUser === storedUser.username || inputUser === storedUser.email) && inputPass === storedUser.password) {
-                localStorage.setItem("currentUser", JSON.stringify(storedUser));
+            const user = users.find( u => (u.username === inputUser || u.email === inputUser) && u.password === inputPass );
+
+            if (user) {
+                localStorage.setItem("currentUser", JSON.stringify(user));
                 alert("Login berhasil!");
                 window.location.href = "index.html";
-            } else {
-                // Hardcode user cadangan kalau belum register
-                if (inputUser === "admin" && inputPass === "admin123") {
-                    localStorage.setItem("currentUser", JSON.stringify({username: "Admin"}));
-                    window.location.href = "index.html";
-                } else {
-                    alert("Username/Email atau Password salah!");
-                }
+                return;
             }
+
+            if (inputUser === "admin" && inputPass === "admin123") {
+                localStorage.setItem( "currentUser", JSON.stringify({ username: "Admin", role: "admin" }) );
+
+                window.location.href = "index.html";
+                return;
+            }
+
+            alert("Username/Email atau Password salah!");
         });
     }
 });
@@ -70,3 +80,20 @@ function logout() {
     localStorage.removeItem("currentUser");
     window.location.href = "index.html";
 }
+
+document.querySelectorAll(".toggle-password").forEach(button => {
+    button.addEventListener("click", () => {
+        const input = button.parentElement.querySelector("input");
+        const icon = button.querySelector("i");
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        }
+    });
+});
