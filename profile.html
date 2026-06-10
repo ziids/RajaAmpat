@@ -21,15 +21,23 @@
                 </a>
             </div>
             <ul class="sidebar-menu">
-    <li><a href="#" id="btnMenuProfile" class="active"><i class="far fa-user"></i> Profile</a></li>
-    <li><a href="#" id="btnMenuHistory"><i class="fas fa-shopping-cart"></i> Order History</a></li>
-    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-    <li><a href="index.html" style="margin-top: 50px; color: #d9534f;"><i class="fas fa-sign-out-alt"></i> Back to Home</a></li>
-    </ul>
+                <li><a href="#" id="btnMenuProfile" class="active"><i class="far fa-user"></i> Profile</a></li>
+                <li><a href="#" id="btnMenuHistory"><i class="fas fa-shopping-cart"></i> Order History</a></li>
+                <li><a href="#" id="btnMenuSettings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li>
+                    <a href="#" id="btnSidebarLogout" style="margin-top: 50px; color: #d9534f;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
         </aside>
 
         <main class="main-content">
             <header class="top-header">
+                <a href="index.html" class="btn-back-home" title="Back to Home">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+
                 <div class="user-dropdown">
                     <i class="far fa-bell" style="margin-right: 15px; color: #888; font-size: 18px;"></i>
                     <div class="user-info">
@@ -37,11 +45,11 @@
                         <strong id="topUsername">User</strong>
                     </div>
                     <img src="https://ui-avatars.com/api/?name=User&background=f0f4f4&color=1a4d4d" id="topAvatar" alt="Avatar">
-                    <i class="fas fa-chevron-down" style="color: #888; font-size: 12px;"></i>
                 </div>
             </header>
 
-        <section id="sectionProfile" class="profile-section">
+            <!-- ===== SECTION PROFILE ===== -->
+            <section id="sectionProfile" class="profile-section">
                 <div class="profile-card">
                     <div class="card-header">
                         <h2>MY PROFILE</h2>
@@ -51,129 +59,121 @@
                     <div class="card-body">
                         <div class="avatar-section">
                             <img src="https://ui-avatars.com/api/?name=User&background=f0f4f4&color=1a4d4d" id="mainAvatar" alt="Profile Avatar">
-                            <button class="btn-upload">Upload Photo</button>
                         </div>
 
                         <div class="data-list">
-                            <div class="data-item">
-                                <div>
+                            <!-- NAME ROW -->
+                            <div class="data-item" id="rowName">
+                                <div class="data-text">
                                     <div class="data-label">Your Name</div>
                                     <div class="data-value" id="profileName">-</div>
                                 </div>
-                                <button class="btn-edit">Edit</button>
+                                <button class="btn-edit" data-field="name">Edit</button>
                             </div>
-                            
-                            <div class="data-item">
-                                <div>
+                            <!-- NAME EDIT FORM (hidden by default) -->
+                            <div class="inline-edit-form" id="editFormName" style="display:none;">
+                                <input type="text" id="inputName" class="inline-input" placeholder="Masukkan nama baru">
+                                <div class="inline-edit-actions">
+                                    <button class="btn-save" id="saveName">Simpan</button>
+                                    <button class="btn-cancel" id="cancelName">Batal</button>
+                                </div>
+                            </div>
+
+                            <!-- EMAIL ROW -->
+                            <div class="data-item" id="rowEmail">
+                                <div class="data-text">
                                     <div class="data-label">Email</div>
                                     <div class="data-value" id="profileEmail">-</div>
                                 </div>
-                                <button class="btn-edit">Edit</button>
+                                <button class="btn-edit" data-field="email">Edit</button>
                             </div>
-
-                            <div class="data-item">
-                                <div>
-                                    <div class="data-label">Phone Number</div>
-                                    <div class="data-value" id="profilePhone">Belum diatur</div>
+                            <!-- EMAIL EDIT FORM (hidden by default) -->
+                            <div class="inline-edit-form" id="editFormEmail" style="display:none;">
+                                <input type="email" id="inputEmail" class="inline-input" placeholder="Masukkan email baru">
+                                <div class="inline-edit-actions">
+                                    <button class="btn-save" id="saveEmail">Simpan</button>
+                                    <button class="btn-cancel" id="cancelEmail">Batal</button>
                                 </div>
-                                <button class="btn-edit">Edit</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- ===== SECTION ORDER HISTORY ===== -->
             <section id="sectionHistory" class="profile-section" style="display: none;">
                 <div class="profile-card">
                     <div class="card-header">
                         <h2>ORDER HISTORY</h2>
                     </div>
                     <div class="card-body">
-                        <div id="orderHistoryContainer" class="history-list">
-                            </div>
+                        <div id="orderHistoryContainer" class="history-list"></div>
                     </div>
                 </div>
             </section>
+
+            <!-- ===== SECTION SETTINGS ===== -->
+            <section id="sectionSettings" class="profile-section" style="display: none;">
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2>SETTINGS</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-list">
+
+                            <!-- CHANGE PASSWORD -->
+                            <div class="settings-item">
+                                <div class="settings-item-info">
+                                    <i class="fas fa-lock settings-icon"></i>
+                                    <div>
+                                        <div class="settings-label">Ganti Password</div>
+                                        <div class="settings-desc">Perbarui kata sandi akun kamu</div>
+                                    </div>
+                                </div>
+                                <button class="btn-edit" id="btnChangePassword">Ubah</button>
+                            </div>
+                            <div class="inline-edit-form" id="editFormPassword" style="display:none;">
+                                <input type="password" id="inputOldPassword" class="inline-input" placeholder="Password lama" style="margin-bottom:8px;">
+                                <input type="password" id="inputNewPassword" class="inline-input" placeholder="Password baru">
+                                <div class="inline-edit-actions">
+                                    <button class="btn-save" id="savePassword">Simpan</button>
+                                    <button class="btn-cancel" id="cancelPassword">Batal</button>
+                                </div>
+                            </div>
+
+                            <!-- DANGER ZONE: DELETE ACCOUNT -->
+                            <div class="settings-item danger-zone">
+                                <div class="settings-item-info">
+                                    <i class="fas fa-trash-alt settings-icon danger-icon"></i>
+                                    <div>
+                                        <div class="settings-label danger-label">Hapus Akun</div>
+                                        <div class="settings-desc">Tindakan ini tidak dapat dibatalkan. Semua data kamu akan dihapus permanen.</div>
+                                    </div>
+                                </div>
+                                <button class="btn-danger" id="btnDeleteAccount">Hapus</button>
+                            </div>
+
+                            <!-- DELETE CONFIRM FORM -->
+                            <div class="inline-edit-form danger-confirm" id="deleteConfirmForm" style="display:none;">
+                                <p class="danger-confirm-text">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Masukkan password kamu untuk konfirmasi penghapusan akun.
+                                </p>
+                                <input type="password" id="inputDeletePassword" class="inline-input" placeholder="Masukkan password kamu">
+                                <div class="inline-edit-actions">
+                                    <button class="btn-danger-confirm" id="confirmDeleteAccount">Ya, Hapus Akunku</button>
+                                    <button class="btn-cancel" id="cancelDeleteAccount">Batal</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 1. Ambil data user yang lagi login
-            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-            if (currentUser) {
-                // Tembak data profil ke HTML
-                document.getElementById("topUsername").textContent = currentUser.username;
-                document.getElementById("profileName").textContent = currentUser.username;
-                document.getElementById("profileEmail").textContent = currentUser.email || "Email tidak tersedia";
-                
-                const avatarUrl = `https://ui-avatars.com/api/?name=${currentUser.username}&background=f0f4f4&color=1a4d4d`;
-                document.getElementById("topAvatar").src = avatarUrl;
-                document.getElementById("mainAvatar").src = avatarUrl;
-
-                // ==========================================
-                // 2. LOGIKA ORDER HISTORY MULAI DARI SINI
-                // ==========================================
-                const historyContainer = document.getElementById("orderHistoryContainer");
-                const orderHistory = JSON.parse(localStorage.getItem("history_" + currentUser.username)) || [];
-
-                if (orderHistory.length === 0) {
-                    historyContainer.innerHTML = `
-                        <div class="empty-history" style="text-align:center; padding:30px; color:#666; background:#f8fafd; border-radius:8px;">
-                            Belum ada riwayat pemesanan nih. Yuk pesen paket wisata Raja Ampat sekarang!
-                        </div>`;
-                } else {
-                    let htmlContent = "";
-                    // Pake slice().reverse() biar orderan terbaru di atas
-                    orderHistory.slice().reverse().forEach((order) => {
-                        htmlContent += `
-                            <div style="background: #fdfdfd; padding: 15px; border-radius: 8px; border-left: 5px solid #1a4d4d; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 15px; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #ddd; padding-bottom: 8px; margin-bottom: 10px;">
-                                    <strong style="color: #1a4d4d;">${order.layanan} | ${order.id}</strong>
-                                    <span style="font-size: 12px; color: #888;">${order.tanggalOrder || '-'}</span>
-                                </div>
-                                <div style="font-size: 14px; color: #444; line-height: 1.6;">
-                                    <div><strong>Atas Nama:</strong> ${order.nama}</div>
-                                    <div><strong>Detail:</strong> ${order.peserta} Orang | ${order.waktu} Hari</div>
-                                    <div><strong>Total Tagihan:</strong> <span style="color: #d9534f; font-weight: bold;">${order.totalTagihan}</span></div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    historyContainer.innerHTML = htmlContent;
-                }
-            } else {
-                alert("Silakan login terlebih dahulu!");
-                window.location.href = "login.html";
-            }
-
-            // ==========================================
-            // 3. LOGIKA TAB SWITCHING SIDEBAR TARUH DI SINI
-            // ==========================================
-            const btnProfile = document.getElementById("btnMenuProfile");
-            const btnHistory = document.getElementById("btnMenuHistory");
-            const secProfile = document.getElementById("sectionProfile");
-            const secHistory = document.getElementById("sectionHistory");
-
-            // Pas diklik menu Profile
-            btnProfile.addEventListener("click", (e) => {
-                e.preventDefault(); 
-                secProfile.style.display = "block";
-                secHistory.style.display = "none";
-                btnProfile.classList.add("active");
-                btnHistory.classList.remove("active");
-            });
-
-            // Pas diklik menu Order History
-            btnHistory.addEventListener("click", (e) => {
-                e.preventDefault();
-                secProfile.style.display = "none";
-                secHistory.style.display = "block";
-                btnHistory.classList.add("active");
-                btnProfile.classList.remove("active");
-            });
-        });
-    </script>
+    <script src="./assets/js/profile.js"></script>
 </body>
 </html>
