@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Kalau udah login, ganti tombol Register/Login jadi Profile & Logout
         if (navButtons) {
             navButtons.innerHTML = `
-    <a href="profile.html" class="nav-btn nav-btn-register">Halo, ${currentUser.username}</a>
-    <a href="#" id="btnLogout" class="nav-btn nav-btn-login">Logout</a>
-`;
+                <a href="profile.html" class="user-greeting">Halo, <b>${currentUser.username}</b>!</a>
+                <a href="#" id="btnLogout" class="nav-btn nav-btn-desktop">Logout</a>
+            `;
             
             document.getElementById("btnLogout").addEventListener("click", (e) => {
                 e.preventDefault();
