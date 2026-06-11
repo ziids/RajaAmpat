@@ -440,3 +440,171 @@ body.profile-page {
 .btn-danger-confirm:hover {
     background: #c0392b;
 }
+
+/* =========================================================
+   RESPONSIVE LAYOUT (Mobile / HP) - FINAL FIX
+   ========================================================= */
+@media screen and (max-width: 768px) {
+    /* 1. Bikin Full Screen Ala Aplikasi HP */
+    body.profile-page {
+        padding: 0; /* Hilangin sisa background gelap di pinggir */
+        background: #f8fafd; 
+    }
+
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        height: auto;
+        border-radius: 0; /* Hilangin sudut bulat wadah utama */
+        box-shadow: none;
+    }
+
+    /* 2. Main Content & Header */
+    .main-content {
+        margin-left: 0 !important;
+        width: 100%;
+        padding: 10px 15px 90px 15px; /* Padding bawah digedein buat ruang bottom nav */
+    }
+
+    .top-header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 5px;
+        background: transparent;
+        border-bottom: none;
+    }
+
+    .user-info span {
+        display: none;
+    }
+
+    /* 3. Bottom Navigation (Menu Bawah) */
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 75px; /* KUNCI 1: Tingginya digedein sesuai ide lo */
+        background: #fff;
+        border-right: none;
+        border-top: 1px solid #eee;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        z-index: 999;
+        box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+    }
+
+    .sidebar-logo {
+        display: none;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+    }
+
+    .sidebar-menu li {
+        margin: 0;
+        flex: 1;
+    }
+
+    .sidebar-menu a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        
+        /* KUNCI FIX: Paksa reset semua sisi padding (Atas 16px, Kanan 0, Bawah 0, Kiri 0) */
+        padding: 16px 0 0 0 !important; 
+        
+        width: 100%; 
+        font-size: 10px;
+        text-align: center;
+        line-height: 1.2;
+        gap: 4px;
+        height: 75px;
+        border: none !important;
+        background: transparent !important;
+        color: #888;
+        position: relative;
+    }
+
+   .sidebar-menu li a i {
+        margin-right: 0 !important; /* KUNCI FIX: Paksa bunuh margin kanan 15px dari desktop */
+        font-size: 20px;
+        margin-bottom: 2px; /* Kasih jarak dikit ke teks di bawahnya */
+    }
+
+    /* KUNCI FIX 2: Bunuh efek border kanan pas menu di-hover / diklik di HP */
+    .sidebar-menu li a:hover,
+    #btnSidebarLogout:hover {
+        border-right: none !important;
+        background-color: transparent !important;
+    }
+
+    .sidebar-menu a.active {
+        color: #1a4d4d !important;
+        background-color: transparent !important;
+        /* Border-top dihapus total dari sini */
+    }
+
+    /* KUNCI: Bikin garis ijo ngambang di atas, gak ngedorong konten ke bawah */
+    .sidebar-menu a.active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #1a4d4d;
+    }
+
+    #btnSidebarLogout {
+        margin-top: 0 !important; 
+        color: #d9534f !important;
+    }
+
+    /* 4. Proporsi Card & Tombol Edit */
+    .profile-card {
+        margin-top: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Shadow diperhalus */
+    }
+
+    .card-header {
+        padding: 15px 20px;
+    }
+
+    .card-body {
+        padding: 25px 20px; /* Kurangin padding dalem biar lega */
+    }
+
+    /* Balikin susunan row biar rapi kayak aplikasi asli */
+    .data-item {
+        flex-direction: row; 
+        align-items: center;
+        gap: 0;
+        padding: 15px 0;
+    }
+
+    .data-value {
+        font-size: 14px;
+        word-break: break-word; /* Jaga-jaga kalau emailnya kepanjangan */
+    }
+
+    .data-item .btn-edit {
+        align-self: center; 
+        margin-top: 0; /* Hapus hack sebelumnya */
+        padding: 5px 15px;
+    }
+
+    .inline-edit-actions {
+        flex-direction: column; 
+    }
+}
